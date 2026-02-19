@@ -1,13 +1,6 @@
 {
-    "version": 2,
-    "framework": "vite",
-    "buildCommand": "cd frontend && npm install && npm run build",
     "outputDirectory": "frontend/dist",
     "rewrites": [
-        {
-            "source": "/assets/(.*)",
-            "destination": "/assets/$1"
-        },
         {
             "source": "/(.*)",
             "destination": "/index.html"
