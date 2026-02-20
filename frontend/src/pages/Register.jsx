@@ -28,7 +28,10 @@ const Register = () => {
             setSuccess('Registration successful! Redirecting to login...');
             setTimeout(() => navigate('/login'), 1500);
         } catch (err) {
-            setError(err.response?.data?.message || 'Registration failed. Please try again.');
+            console.error('[Register] Error:', err);
+            const message = err.response?.data?.message ||
+                (err.message === 'Network Error' ? 'Connection failed. Check if local server is running or API URL is correct.' : 'Registration failed. Please try again.');
+            setError(message);
         } finally {
             setLoading(false);
         }
