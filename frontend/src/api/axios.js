@@ -6,7 +6,7 @@ const API = axios.create({
 
 // Attach JWT token to every request
 API.interceptors.request.use((config) => {
-    const token = localStorage.getItem('bookmydoc_token');
+    const token = localStorage.getItem('meditrack_token');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }

@@ -8,8 +8,8 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('bookmydoc_token');
-        const storedUser = localStorage.getItem('bookmydoc_user');
+        const storedToken = localStorage.getItem('meditrack_token');
+        const storedUser = localStorage.getItem('meditrack_user');
         if (storedToken && storedUser) {
             setToken(storedToken);
             setUser(JSON.parse(storedUser));
@@ -20,15 +20,15 @@ export const AuthProvider = ({ children }) => {
     const login = (userData, jwtToken) => {
         setUser(userData);
         setToken(jwtToken);
-        localStorage.setItem('bookmydoc_token', jwtToken);
-        localStorage.setItem('bookmydoc_user', JSON.stringify(userData));
+        localStorage.setItem('meditrack_token', jwtToken);
+        localStorage.setItem('meditrack_user', JSON.stringify(userData));
     };
 
     const logout = () => {
         setUser(null);
         setToken(null);
-        localStorage.removeItem('bookmydoc_token');
-        localStorage.removeItem('bookmydoc_user');
+        localStorage.removeItem('meditrack_token');
+        localStorage.removeItem('meditrack_user');
     };
 
     return (

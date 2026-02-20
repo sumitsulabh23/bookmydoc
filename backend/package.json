@@ -1,5 +1,5 @@
 {
-  "name": "bookmydoc-backend",
+  "name": "meditrack-backend",
   "version": "1.0.0",
   "description": "BookMyDoc Medical Appointment Management System - Backend",
   "main": "server.js",

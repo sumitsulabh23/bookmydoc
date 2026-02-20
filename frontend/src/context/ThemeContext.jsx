@@ -4,12 +4,12 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
-        return localStorage.getItem('bookmydoc-theme') || 'light';
+        return localStorage.getItem('meditrack-theme') || 'light';
     });
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('bookmydoc-theme', theme);
+        localStorage.setItem('meditrack-theme', theme);
     }, [theme]);
 
     const toggleTheme = () => {

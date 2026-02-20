@@ -10,7 +10,6 @@ const { authorizeRoles } = require('../middleware/roleMiddleware');
 
 const router = express.Router();
 
-// POST /api/appointments — Patient only
 router.post(
     '/',
     protect,
@@ -24,10 +23,8 @@ router.post(
     createAppointment
 );
 
-// GET /api/appointments — Patient & Doctor
 router.get('/', protect, authorizeRoles('patient', 'doctor'), getAppointments);
 
-// PUT /api/appointments/:id — Doctor only
 router.put('/:id', protect, authorizeRoles('doctor'), updateAppointmentStatus);
 
 module.exports = router;

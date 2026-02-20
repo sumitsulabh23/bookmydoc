@@ -11,13 +11,12 @@ const createAppointment = async (req, res, next) => {
             return res.status(400).json({ message: errors.array()[0].msg });
         }
 
-        const { department, doctorName, doctorId, date, timeSlot } = req.body;
+        const { department, doctorName, date, timeSlot } = req.body;
 
         const appointment = await Appointment.create({
             department,
             doctorName,
-            doctorId,
-            patientName: req.user.name,
+            patientName: req.user.name || req.user.email || 'Patient',
             date,
             timeSlot,
             patientId: req.user._id,

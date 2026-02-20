@@ -14,8 +14,8 @@ const appointmentSchema = new mongoose.Schema(
         },
         patientName: {
             type: String,
-            required: [true, 'Patient name is required'],
             trim: true,
+            default: '',
         },
         date: {
             type: String,
@@ -38,7 +38,8 @@ const appointmentSchema = new mongoose.Schema(
         doctorId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
+            required: false,
+            default: null,
         },
     },
     { timestamps: true }

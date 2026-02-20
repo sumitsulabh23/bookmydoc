@@ -12,10 +12,16 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'],
+// CORS — must be before all routes
+const corsOptions = {
+    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
     credentials: true,
-}));
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -36,7 +42,7 @@ app.use((req, res) => {
 // Global error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`🚀 BookMyDoc server running on http://localhost:${PORT}`);
 });
