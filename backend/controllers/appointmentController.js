@@ -44,10 +44,8 @@ const getAppointments = async (req, res, next) => {
                 createdAt: -1,
             });
         } else if (req.user.role === 'doctor') {
-            // Doctors see appointments assigned to them by their unique ID
-            appointments = await Appointment.find({ doctorId: req.user._id }).sort({
-                createdAt: -1,
-            });
+            // Doctors see ALL patient appointments (global admin queue)
+            appointments = await Appointment.find({}).sort({ createdAt: -1 });
         }
 
         res.status(200).json({ appointments });
@@ -71,13 +69,6 @@ const updateAppointmentStatus = async (req, res, next) => {
 
         if (!appointment) {
             return res.status(404).json({ message: 'Appointment not found' });
-        }
-
-        // Verify the doctor is assigned to this appointment
-        if (appointment.doctorId.toString() !== req.user._id.toString()) {
-            return res.status(403).json({
-                message: 'You are not authorized to update this appointment',
-            });
         }
 
         appointment.status = status;

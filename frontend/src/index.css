@@ -344,6 +344,116 @@ button {
     letter-spacing: 1px;
 }
 
+/* Stat card color accents */
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-total {
+    border-left: 4px solid var(--primary);
+}
+
+.stat-pending {
+    border-left: 4px solid var(--warning);
+}
+
+.stat-approved {
+    border-left: 4px solid var(--success);
+}
+
+.stat-rejected {
+    border-left: 4px solid var(--danger);
+}
+
+.stat-pending .stat-value {
+    color: var(--warning);
+}
+
+.stat-approved .stat-value {
+    color: var(--success);
+}
+
+.stat-rejected .stat-value {
+    color: var(--danger);
+}
+
+.stat-total .stat-value {
+    color: var(--primary);
+}
+
+/* Card utilities used by dashboards */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.card-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.card-loading {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+
+/* Appointment list items in dashboard */
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.appointment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.appt-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.appt-dept {
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.appt-doctor {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.appt-date {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+}
+
+/* Quick action utility */
+.qa-icon {
+    font-size: 1.25rem;
+}
+
+
 /* Dashboard Content */
 .dashboard-grid {
     display: grid;
