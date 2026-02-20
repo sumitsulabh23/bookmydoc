@@ -14,13 +14,18 @@ const app = express();
 // Middleware
 // CORS — must be before all routes
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'];
+    ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+    : [];
 
 const corsOptions = {
     origin: (origin, callback) => {
-        // Allow requests with no origin (Postman, mobile apps)
+        // Allow requests with no origin (Postman, curl, mobile apps)
         if (!origin) return callback(null, true);
+        // Always allow localhost dev origins
+        if (origin.startsWith('http://localhost')) return callback(null, true);
+        // Always allow any vercel.app or onrender.com subdomain
+        if (origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com')) return callback(null, true);
+        // Allow any explicitly listed origins
         if (allowedOrigins.includes(origin)) return callback(null, true);
         return callback(new Error(`CORS: origin ${origin} not allowed`));
     },
